@@ -75,3 +75,13 @@ class product_table(models.Model):
 
     def __str__(self):
         return self.name
+
+    
+    def filter_assigned_images(self):
+        filter_product_images = product_image.objects.filter(product_info = self)
+        return filter_product_images
+
+
+class product_image(models.Model):
+    product_info = models.ForeignKey(product_table, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to = 'product_img/', blank=True, null=True)

@@ -201,7 +201,7 @@
                                         </div>
                                         <div class="text-center rounded-bottom p-4">
                                             <a href="#" class="d-block mb-2">{{ product.choose_category.title }}</a>
-                                            <a href="#" class="d-block h4">{{ product.name }}</a>
+                                            <a href="{% url 'product_details' product.slug %}" class="d-block h4">{{ product.name }}</a>
                                             <del class="me-2 fs-5">${{ product.price }}</del>
                                             <span class="text-primary fs-5">${{ product.old_price }}</span>
                                         </div>

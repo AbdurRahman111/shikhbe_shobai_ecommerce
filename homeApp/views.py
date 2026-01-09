@@ -12,8 +12,15 @@ def index(request):
 
 
 
-def product_details(request):
-    return render(request, "product_details.html")
+def product_details(request, product_slug):
+    print("product_slug")
+    print(product_slug)
+
+    get_product_from_slug = product_table.objects.get(slug = product_slug)
+    context = {
+        'get_product_from_slug':get_product_from_slug,
+    }
+    return render(request, "product_details.html", context)
 
 
 def help_func(request):

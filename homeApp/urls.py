@@ -4,7 +4,7 @@ from . import views
 
 urlpatterns = [
     path("", views.index, name="index"), # "" = base url 
-    path("product-details/", views.product_details, name="product_details"),
+    path("product-details/<str:product_slug>/", views.product_details, name="product_details"),
 
     path('help/', views.help_func, name="help_func"),
     path('support/', views.support_func, name="support_func"),
