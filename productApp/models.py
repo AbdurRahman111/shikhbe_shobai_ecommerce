@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 
 
@@ -85,3 +85,20 @@ class product_table(models.Model):
 class product_image(models.Model):
     product_info = models.ForeignKey(product_table, on_delete=models.CASCADE)
     image = models.ImageField(upload_to = 'product_img/', blank=True, null=True)
+
+
+
+class Cart(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Cart - {self.user.username}"
+
+class CartItem(models.Model):
+    cart=models.ForeignKey(Cart, on_delete=models.CASCADE, related_name='items')
+    product=models.ForeignKey(product_table, on_delete=models.CASCADE)
+    quantity=models.PositiveIntegerField(default=1)
+
+    def subtotal(self):
+        return self.product.price * self.quantity

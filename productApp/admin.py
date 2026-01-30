@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import brand_table, category_table, test_table, product_table, product_image
+from .models import brand_table, category_table, test_table, product_table, product_image, Cart, CartItem
 # Register your models here.
 
 from django.utils.html import mark_safe
@@ -38,3 +38,7 @@ class ProductTableAdmin(admin.ModelAdmin):
 admin.site.register(product_table, ProductTableAdmin)
 
 admin.site.register(product_image)
+
+
+admin.site.register(Cart)
+admin.site.register(CartItem)

@@ -27,6 +27,7 @@ urlpatterns = [
     path("", include('homeApp.urls')), # "" = base url example : www.example.com
 
     path("accounts/", include('accounts.urls')),
+    path("product/", include('productApp.urls')),
 ]
 
 if settings.DEBUG:
